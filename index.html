@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🧠 BRAINROT ZONE 🧠</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@700;900&display=swap');
+
+    :root {
+      --purple: #7b2ff7;
+      --pink:   #ff2d78;
+      --blue:   #00d4ff;
+      --yellow: #ffe600;
+      --dark:   #0a0a12;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(123,47,247,0.35) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(255,45,120,0.3) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 80%, rgba(0,212,255,0.2) 0%, transparent 60%),
+        var(--dark);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.05); }
+    }
+
+    .hero h1 {
+      font-family: 'Bangers', cursive;
+      font-size: clamp(4rem, 12vw, 9rem);
+      line-height: 1;
+      letter-spacing: 4px;
+      background: linear-gradient(135deg, #fff 0%, var(--yellow) 30%, var(--pink) 60%, var(--blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 30px rgba(255,45,120,0.5));
+      animation: flicker 4s infinite;
+    }
+
+    @keyframes flicker {
+      0%,95%,100% { opacity: 1; }
+      96%          { opacity: 0.85; }
+      97%          { opacity: 1; }
+      98%          { opacity: 0.9; }
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: rgba(255,255,255,0.6);
+      margin-top: 16px;
+      margin-bottom: 36px;
+      max-width: 600px;
+    }
+
+    .hero-sub span {
+      color: var(--yellow);
+      font-weight: 900;
+    }
+
+    .scroll-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 36px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: 1px;
+      box-shadow: 0 0 30px rgba(255,45,120,0.4);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .scroll-btn:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 0 50px rgba(255,45,120,0.7);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,18,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid rgba(123,47,247,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      padding: 7px 18px;
+      border-radius: 50px;
+      transition: background 0.2s, color 0.2s;
+      text-transform: uppercase;
+    }
+
+    nav a:hover {
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: #fff;
+    }
+
+    nav .logo {
+      font-family: 'Bangers', cursive;
+      font-size: 1.5rem;
+      color: var(--yellow);
+      letter-spacing: 2px;
+      margin-right: 16px;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Bangers', cursive;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: 3px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .section-title.pink  { color: var(--pink); }
+    .section-title.blue  { color: var(--blue); }
+    .section-title.yellow{ color: var(--yellow); }
+
+    .section-desc {
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 1rem;
+      margin-bottom: 50px;
+    }
+
+    /* ── VIDEO GRID ── */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .video-card {
+      background: #111122;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .video-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--purple);
+      box-shadow: 0 0 30px rgba(123,47,247,0.4);
+    }
+
+    .video-card.pink-glow:hover {
+      border-color: var(--pink);
+      box-shadow: 0 0 30px rgba(255,45,120,0.4);
+    }
+
+    .video-card.blue-glow:hover {
+      border-color: var(--blue);
+      box-shadow: 0 0 30px rgba(0,212,255,0.4);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    .video-info {
+      padding: 14px 16px;
+    }
+
+    .video-info h3 {
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .video-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-top: 6px;
+    }
+
+    .tag-brainrot { background: var(--pink);   color: #fff; }
+    .tag-fortnite { background: var(--purple);  color: #fff; }
+    .tag-viral    { background: var(--yellow);  color: #000; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--purple), var(--pink), var(--blue), var(--yellow), var(--purple));
+      background-size: 200% 100%;
+      animation: slide 3s linear infinite;
+    }
+
+    @keyframes slide {
+      from { background-position: 0% 0%; }
+      to   { background-position: 200% 0%; }
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      padding: 14px 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 60px;
+      white-space: nowrap;
+      animation: marquee 20s linear infinite;
+      font-family: 'Bangers', cursive;
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: rgba(255,255,255,0.25);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    footer span { color: var(--pink); }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">🔥 Warning: Maximum Brainrot 🔥</div>
+    <h1>BRAINROT ZONE</h1>
+    <p class="hero-sub">Your #1 source for peak <span>brainrot content</span> &amp; <span>Fortnite clips</span> 🎮💀</p>
+    <a href="#brainrot" class="scroll-btn">☠️ Enter the rot</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <span class="logo">☠️ BRAINROT</span>
+    <a href="#brainrot">Brainrot</a>
+    <a href="#fortnite">Fortnite</a>
+    <a href="#viral">Viral</a>
+  </nav>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>🧠 SIGMA GRINDSET</span>
+      <span>🗿 MEWING TUTORIAL</span>
+      <span>🎮 FORTNITE CLIPS</span>
+      <span>💀 BRAINROT CONTENT</span>
+      <span>🔥 SKIBIDI TOILET</span>
+      <span>😤 RIZZ COMPILATION</span>
+      <span>🐺 OHIO RIZZ</span>
+      <span>🧠 SIGMA GRINDSET</span>
+      <span>🗿 MEWING TUTORIAL</span>
+      <span>🎮 FORTNITE CLIPS</span>
+      <span>💀 BRAINROT CONTENT</span>
+      <span>🔥 SKIBIDI TOILET</span>
+      <span>😤 RIZZ COMPILATION</span>
+      <span>🐺 OHIO RIZZ</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BRAINROT SECTION -->
+  <section id="brainrot">
+    <div class="section-title pink">🧠 Peak Brainrot</div>
+    <p class="section-desc">The most unhinged content the internet has to offer. You have been warned.</p>
+    <div class="video-grid">
+
+      <div class="video-card pink-glow">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/r7lTuFnMIXM" title="Skibidi Toilet" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Skibidi Toilet – The Original 🚽</h3>
+          <span class="video-tag tag-brainrot">Brainrot</span>
+        </div>
+      </div>
+
+      <div class="video-card pink-glow">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/KG-JZKVxFW4" title="Sigma Boy" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Sigma Boy – Phonk Edition 🗿</h3>
+          <span class="video-tag tag-brainrot">Brainrot</span>
+        </div>
+      </div>
+
+      <div class="video-card pink-glow">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/pPvd8UxmSbQ" title="Italian Brainrot" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Italian Brainrot Animals 🐊</h3>
+          <span class="video-tag tag-brainrot">Brainrot</span>
+        </div>
+      </div>
+
+      <div class="video-card pink-glow">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/ZZyRWDsz1_c" title="Brainrot Compilation" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Brainrot Compilation 💀</h3>
+          <span class="video-tag tag-viral">Viral</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FORTNITE SECTION -->
+  <section id="fortnite">
+    <div class="section-title blue">🎮 Fortnite Clips</div>
+    <p class="section-desc">The sweatiest, most unreal Fortnite moments ever caught on camera.</p>
+    <div class="video-grid">
+
+      <div class="video-card blue-glow">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/B_Kl4EJKM7k" title="Fortnite Best Moments" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Fortnite Best Moments 2024 🏆</h3>
+          <span class="video-tag tag-fortnite">Fortnite</span>
+        </div>
+      </div>
+
+      <div class="video-card blue-glow">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/7fJgELK0QiE" title="Fortnite Funny Moments" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Fortnite Funny Moments 😂</h3>
+          <span class="video-tag tag-fortnite">Fortnite</span>
+        </div>
+      </div>
+
+      <div class="video-card blue-glow">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/mCwQocS8qEg" title="Fortnite Montage" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Fortnite Montage – No Cap 🔥</h3>
+          <span class="video-tag tag-fortnite">Fortnite</span>
+        </div>
+      </div>
+
+      <div class="video-card blue-glow">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/p1D0YFLzBm4" title="Fortnite Win Compilation" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Fortnite Win Compilation 👑</h3>
+          <span class="video-tag tag-viral">Viral</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VIRAL SECTION -->
+  <section id="viral">
+    <div class="section-title yellow">⚡ Viral Chaos</div>
+    <p class="section-desc">Internet is cooked. Here's proof.</p>
+    <div class="video-grid">
+
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/w5VsT5KWgXg" title="Ohio Compilation" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Only In Ohio Compilation 🌽</h3>
+          <span class="video-tag tag-viral">Viral</span>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/0o_JzSsuFOo" title="Rizz Tutorial" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Rizz Master Class 😏</h3>
+          <span class="video-tag tag-viral">Viral</span>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/q8xhj8ckQAA" title="Mewing Tutorial" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Mewing Tutorial (Real) 🦷</h3>
+          <span class="video-tag tag-brainrot">Brainrot</span>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Never Gonna Give You Up" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <div class="video-info">
+          <h3>Trust me bro just click it 👀</h3>
+          <span class="video-tag tag-viral">Viral</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER MARQUEE -->
+  <div class="marquee-wrap" style="background: linear-gradient(135deg, #0a0a12, #1a0a2e);">
+    <div class="marquee-track" style="animation-direction: reverse; color: rgba(255,255,255,0.4);">
+      <span>🔥 GYATT</span>
+      <span>💀 NO CAP FR FR</span>
+      <span>🗿 BASED</span>
+      <span>😭 IT'S GIVING</span>
+      <span>🐺 WOLF CUT</span>
+      <span>🧠 DELULU</span>
+      <span>😤 SLAY</span>
+      <span>🎮 GG EZ</span>
+      <span>🔥 GYATT</span>
+      <span>💀 NO CAP FR FR</span>
+      <span>🗿 BASED</span>
+      <span>😭 IT'S GIVING</span>
+      <span>🐺 WOLF CUT</span>
+      <span>🧠 DELULU</span>
+      <span>😤 SLAY</span>
+      <span>🎮 GG EZ</span>
+    </div>
+  </div>
+
+  <footer>
+    <p>☠️ <span>BRAINROT ZONE</span> — lmra-lumora.nl — Your brain will not survive this ☠️</p>
+    <p style="margin-top:8px;">All videos are embedded via YouTube's official embed system.</p>
+  </footer>
+
+</body>
+</html>
